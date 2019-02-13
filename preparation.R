@@ -4,13 +4,14 @@ library(igraph)
 library(tidygraph)
 
 # 基本グラフ描写関数
-plot_tbl_data <- function(tbl_data){
+plot_tbl_data <- function(tbl_data, title = ""){
   tbl_data %>%  
     ggraph(layout = "kk") +
     geom_edge_link(alpha=0.8, colour = "lightgray") + 
     scale_edge_width(range = c(0.1,1)) +
     geom_node_point(aes( size = 4)) +
-    geom_node_label(aes(label = name),repel = TRUE)
+    geom_node_label(aes(label = name),repel = TRUE) +
+    ggtitle(title)
 }
 
 # 中心性の描画関数
